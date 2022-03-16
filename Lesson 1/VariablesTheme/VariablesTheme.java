@@ -21,10 +21,10 @@ public class VariablesTheme {
 
         //2. Расчет стоимости товара со скидкой
         System.out.println("2. Расчет стоимости товара со скидкой");
-        int itemPriceX = 100;
-        int itemPriceY = 200;
-        float discount = (float) (itemPriceX + itemPriceY) * 0.11F;        
-        float finalSum = itemPriceX + itemPriceY - discount;
+        int priceX = 100;
+        int priceY = 200;
+        float discount = (float) (priceX + priceY) * 0.11F;        
+        float finalSum = priceX + priceY - discount;
         System.out.println("Итоговая сумма товаров с учетом скидки: " + finalSum); 
         System.out.println("Сумма скидки: " + discount);
 
@@ -49,30 +49,18 @@ public class VariablesTheme {
         System.out.println("Максимальное значение типа float: " + maxFloat);
         double maxDouble = Double.MAX_VALUE;
         System.out.println("Максимальное значение типа double: " + maxDouble);
-        maxByte += 1;
-        System.out.println("Значение типа byte после инкремента на 1: " + maxByte);
-        maxShort += 1;        
-        System.out.println("Значение типа short после инкремента на 1: " + maxShort);
-        maxInt += 1;
-        System.out.println("Значение типа int после инкремента на 1: " + maxInt);
-        maxLong += 1;
-        System.out.println("Значение типа long после инкремента на 1: " + maxLong);
-        maxFloat += 1;
-        System.out.println("Значение типа float после инкремента на 1: " + maxFloat);
-        maxDouble += 1;
-        System.out.println("Значение типа double после инкремента на 1: " + maxDouble);
-        maxByte -= 1;
-        System.out.println("Значение типа byte после декремента на 1: " + maxByte);
-        maxShort -= 1;        
-        System.out.println("Значение типа short после декремента на 1: " + maxShort);
-        maxInt -= 1;
-        System.out.println("Значение типа int после декремента на 1: " + maxInt);
-        maxLong -= 1;
-        System.out.println("Значение типа long после декремента на 1: " + maxLong);
-        maxFloat -= 1;
-        System.out.println("Значение типа float после декремента на 1: " + maxFloat);
-        maxDouble -= 1;
-        System.out.println("Значение типа double после декремента на 1: " + maxDouble);
+        System.out.println("Значение типа byte после инкремента на 1: " + ++maxByte);
+        System.out.println("Значение типа short после инкремента на 1: " + ++maxShort);
+        System.out.println("Значение типа int после инкремента на 1: " + ++maxInt);
+        System.out.println("Значение типа long после инкремента на 1: " + ++maxLong);
+        System.out.println("Значение типа float после инкремента на 1: " + ++maxFloat);
+        System.out.println("Значение типа double после инкремента на 1: " + ++maxDouble);
+        System.out.println("Значение типа byte после декремента на 1: " + --maxByte);
+        System.out.println("Значение типа short после декремента на 1: " + --maxShort);
+        System.out.println("Значение типа int после декремента на 1: " + --maxInt);
+        System.out.println("Значение типа long после декремента на 1: " + --maxLong);
+        System.out.println("Значение типа float после декремента на 1: " + --maxFloat);        
+        System.out.println("Значение типа double после декремента на 1: " + --maxDouble);
 
         //5. Перестановка значений переменных
         System.out.println("5. Перестановка значений переменных");
@@ -101,10 +89,10 @@ public class VariablesTheme {
 
         //7. Произведение и сумма цифр числа
         System.out.println("7. Произведение и сумма цифр числа");
-        int origiunalNumber = 345;
-        int hundred = origiunalNumber / 100;
-        int one = origiunalNumber % 10;
-        int ten = (origiunalNumber / 10) % 10;        
+        int srcNum = 345;
+        int hundred = srcNum / 100;
+        int one = srcNum % 10;
+        int ten = (srcNum / 10) % 10;        
         System.out.println("Произведение цифр числа: " + (hundred * ten * one));
         System.out.println("Сумма цифр числа: " + (hundred + ten + one));
 
@@ -124,10 +112,10 @@ public class VariablesTheme {
 
         //9. Отображение сотен, десятков, единиц числа
         System.out.println("9. Отображение сотен, десятков, единиц числа");
-        int origNumber = 123;
-        System.out.println("сотни: " + (origNumber / 100));
-        System.out.println("десятки: " + ((origNumber / 10) % 10));
-        System.out.println("единицы: " + (origNumber % 10));
+        srcNum = 123;
+        System.out.println("сотни: " + (srcNum / 100));
+        System.out.println("десятки: " + ((srcNum / 10) % 10));
+        System.out.println("единицы: " + (srcNum % 10));
 
         //10. Преобразование секунд
         System.out.println("10. Преобразование секунд");
@@ -135,6 +123,6 @@ public class VariablesTheme {
         int hours = originSeconds / 3600;
         int minutes = (originSeconds % 3600) / 60;
         int seconds = (originSeconds % 3600) % 60;
-        System.out.println("" + hours + ":" + minutes + ":" + seconds);
+        System.out.println(hours + ":" + minutes + ":" + seconds);
     }
 }
