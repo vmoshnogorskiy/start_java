@@ -29,6 +29,7 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("У Вас необычное имя для здешних мест:)");
         }
+        System.out.println();
 
         //2. Поиск максимального и минимального числа
         System.out.println("2. Поиск максимального и минимального числа");
@@ -43,22 +44,24 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Числа равны");
         }
+        System.out.println();
         
         //3. Работа с числом
         System.out.println("3. Работа с числом");
         num1 = 47;
         if (num1 % 2 != 0) {
-            System.out.println("Число является нечетным");
+            System.out.println("Число " + num1 + " является нечетным");
         } else if (num1 != 0) {
-            System.out.println("Число является четным");
+            System.out.println("Число " + num1 + " является четным");
         }
         if (num1 < 0) {
-            System.out.println("Число является отрицательным");
+            System.out.println("Число " + num1 + " является отрицательным");
         } else if (num1 > 0) {
-            System.out.println("Число является положительным");
+            System.out.println("Число " + num1 + " является положительным");
         } else {
-            System.out.println("Число является нулем");
+            System.out.println("Число " + num1 + " является нулем");
         }
+        System.out.println();
 
         //4. Поиск общей цифры в числах
         System.out.println("4. Поиск общей цифры в числах");
@@ -82,16 +85,26 @@ public class IfElseStatementTheme {
         if (one1 == one2) {
             System.out.println("Одинаковые единицы " + one1);
         }
+        System.out.println();
 
         //5. Определение буквы, числа или символа по их коду
         System.out.println("5. Определение буквы, числа или символа по их коду");
         char ch = '\u005A';
-        System.out.println("Переменная содержит букву" + ch);
+        int chAsInt = (int) ch;
+
+        if (chAsInt < 48 || chAsInt > 57 && chAsInt < 65 || chAsInt > 90 && chAsInt < 61 || chAsInt > 122 && chAsInt < 128 || chAsInt > 175 && chAsInt < 224 || chAsInt > 243) {
+            System.out.println("Переменная содержит не букву и не число " + ch);
+        } else if (chAsInt >= 48 && chAsInt < 58) {
+            System.out.println("Переменная содержит число " + ch);
+        } else {
+            System.out.println("Переменная содержит букву " + ch);
+        }        
+        System.out.println();
 
         //6. Определение суммы вклада и начисленных банком %
         System.out.println("6. Определение суммы вклада и начисленных банком %");
         int deposit = 300_000;
-        int percent = 5;
+        int percent = 0;
         if (deposit < 100_000) {
             percent = 5;
         } else if (deposit >= 100_000 && deposit <= 300_000) {
@@ -100,37 +113,39 @@ public class IfElseStatementTheme {
             percent = 10;
         }
         System.out.println("Сумма вклада: " + deposit + " начисленный процент: " + percent + " итоговая сумма с процентом: " + (float) (deposit + (deposit * percent / 100)));
+        System.out.println();
 
         //7. Определение оценки по предметам
         System.out.println("7. Определение оценки по предметам");
         int percentHistory = 59;
         int percentProgramming = 91;
-        int showHistory = 0;
-        int showProgramming = 0;
+        int historyPoints = 0;
+        int programmingPoints = 0;
 
         if (percentHistory <= 60) {
-            showHistory = 2;
+            historyPoints = 2;
         } else if (percentHistory > 60 && percentHistory <= 73) {
-            showHistory = 3;
+            historyPoints = 3;
         } else if (percentHistory > 73 && percentHistory <= 91) {
-            showHistory = 4;
+            historyPoints = 4;
         } else if (percentHistory > 91) {
-            showHistory = 5;
+            historyPoints = 5;
         }
 
         if (percentProgramming <= 60) {
-            showProgramming = 2;
+            programmingPoints = 2;
         } else if (percentProgramming > 60 && percentProgramming <= 73) {
-            showProgramming = 3;
+            programmingPoints = 3;
         } else if (percentProgramming > 73 && percentProgramming <= 91) {
-            showProgramming = 4;
+            programmingPoints = 4;
         } else if (percentProgramming > 91) {
-            showProgramming = 5;
+            programmingPoints = 5;
         }
-        System.out.println("Оценка по истории: " + showHistory);
-        System.out.println("Оценка по программированию: " + showProgramming);
-        System.out.println("Средний бал оценок по предметам: " + (float) (showHistory + showProgramming) / 2);
+        System.out.println("Оценка по истории: " + historyPoints);
+        System.out.println("Оценка по программированию: " + programmingPoints);
+        System.out.println("Средний бал оценок по предметам: " + (float) (historyPoints + programmingPoints) / 2);
         System.out.println("Средний процент по предметам: " + (float) (percentHistory + percentProgramming) / 2);
+        System.out.println();
 
         //8. Расчет прибыли (убытка)
         System.out.println("8. Расчет прибыли (убытка)");
@@ -146,23 +161,80 @@ public class IfElseStatementTheme {
 
         //9. Определение существования треугольника
         System.out.println("9. Определение существования треугольника");        
-        int c = 5;
-        int a = 3;
-        int b = 4;
+        int hypotenuse = 5;
+        int leg1 = 3;
+        int leg2 = 4;
+        int buffer = 0;
+
+        /*
+        Определим гипотенузу и катеты. Гипотенуза в прямоугольном треугольнике - это самая длинная сторона
+        */
+        if (hypotenuse < leg1) {
+            buffer = hypotenuse;
+            hypotenuse = leg1;
+            leg1 = buffer;
+        }
+        if (hypotenuse < leg2) {
+            buffer = hypotenuse;
+            hypotenuse = leg2;
+            leg2 = buffer;
+        }
 
         //В прямоугольном треугольнике квадрат гипотенузы равен сумме квадратов катетов
-        if (c * c == a * a + b * b) {
-            System.out.println("Прямоугольный треугольник со сторонами " + a + ", " + b + ", " + c + " существует");
-            System.out.println("Площадь треугольника равна: " + (float) (a * b / 2));
+        if (hypotenuse * hypotenuse == leg1 * leg1 + leg2 * leg2) {
+            System.out.println("Прямоугольный треугольник со сторонами " + leg1 + ", " + leg2 + ", " + hypotenuse + " существует");
+            System.out.println("Площадь треугольника равна: " + (float) (leg1 * leg2 / 2));
             System.out.println("|\\");
             System.out.println("| \\");
             System.out.println("|  \\");
             System.out.println("|___\\");
         } else {
-            System.out.println("Прямоугольный треугольник со сторонами " + a + ", " + b + ", " + c + " не существует");
+            System.out.println("Прямоугольный треугольник со сторонами " + leg1 + ", " + leg2 + ", " + hypotenuse + " не существует");
         }
+        System.out.println();
 
         //10. Подсчет количества банкнот
         System.out.println("10. Подсчет количества банкнот");
+        int srcSum = 567;
+        int keepSum = 0;
+        int recalcSum = 0;
+        int countMaxNominal = 0;
+        int countMidNominal = 0;
+        int countMinNominal = 0;
+        int maxBanknote = 50;
+        int midBanknote = 10;
+        int minBanknote = 1;
+        int bufferBanknote = 0;
+
+        //Упорядочим номиналы банкнот от Максимального к Минимальному
+        if (maxBanknote < midBanknote) {
+            bufferBanknote = maxBanknote;
+            maxBanknote = midBanknote;
+            midBanknote = bufferBanknote;
+        } 
+        if (maxBanknote < minBanknote) {
+            bufferBanknote = maxBanknote;
+            maxBanknote = minBanknote;
+            minBanknote = bufferBanknote;
+        }
+        if (midBanknote < minBanknote) {
+            bufferBanknote = midBanknote;
+            midBanknote = minBanknote;
+            minBanknote = bufferBanknote;
+        }
+
+        //Подсчитаем необходимое количество банкнот каждого номинала
+        countMaxNominal = srcSum / maxBanknote;
+        keepSum = srcSum % maxBanknote;
+        countMidNominal = keepSum / midBanknote;
+        keepSum = keepSum % midBanknote;
+        countMinNominal = keepSum / minBanknote;        
+        recalcSum = countMaxNominal * maxBanknote + countMidNominal * midBanknote + countMinNominal * minBanknote;
+
+        if (srcSum != recalcSum) {
+            System.out.println("Указанную сумму невозможно получить имеющимися номиналами банкнот. Возможно получить сумму: " + recalcSum);
+        } else {
+            System.out.println("Начальная сумма: " + srcSum + ", банкнот с номиналом " + maxBanknote + ": " + countMaxNominal + ", банкнот с номиналом " + midBanknote + ": " + countMidNominal + ", банкнот с номиналом " + minBanknote + ": " + countMinNominal + ", подсчитанная исходная сумма: " + recalcSum);
+        }
     }
 }
