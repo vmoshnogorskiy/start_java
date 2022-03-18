@@ -1,7 +1,7 @@
 public class IfElseStatementTheme {
     public static void main(String[] args) {
         //1. Перевод псевдокода на язык Java
-        System.out.println("1. Перевод псевдокода на язык Java");
+        System.out.println("\n1. Перевод псевдокода на язык Java");
         int age = 21;
         if (age > 20) {
             System.out.println("Вам разрешен доступ в ночной клуб");
@@ -29,10 +29,9 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("У Вас необычное имя для здешних мест:)");
         }
-        System.out.println();
 
         //2. Поиск максимального и минимального числа
-        System.out.println("2. Поиск максимального и минимального числа");
+        System.out.println("\n2. Поиск максимального и минимального числа");
         int num1 = 354;
         int num2 = 1284;
         if (num1 > num2) {
@@ -44,10 +43,9 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Числа равны");
         }
-        System.out.println();
         
         //3. Работа с числом
-        System.out.println("3. Работа с числом");
+        System.out.println("\n3. Работа с числом");
         num1 = 47;
         if (num1 % 2 != 0) {
             System.out.println("Число " + num1 + " является нечетным");
@@ -61,10 +59,9 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Число " + num1 + " является нулем");
         }
-        System.out.println();
 
         //4. Поиск общей цифры в числах
-        System.out.println("4. Поиск общей цифры в числах");
+        System.out.println("\n4. Поиск общей цифры в числах");
         num1 = 751;
         num2 = 761;
 
@@ -85,24 +82,22 @@ public class IfElseStatementTheme {
         if (one1 == one2) {
             System.out.println("Одинаковые единицы " + one1);
         }
-        System.out.println();
 
         //5. Определение буквы, числа или символа по их коду
-        System.out.println("5. Определение буквы, числа или символа по их коду");
-        char ch = '\u005A';
-        int chAsInt = (int) ch;
+        System.out.println("\n5. Определение буквы, числа или символа по их коду");
+        char character = '\u005A';
+        int charCode = (int) character;
 
-        if (chAsInt < 48 || chAsInt > 57 && chAsInt < 65 || chAsInt > 90 && chAsInt < 61 || chAsInt > 122 && chAsInt < 128 || chAsInt > 175 && chAsInt < 224 || chAsInt > 243) {
-            System.out.println("Переменная содержит не букву и не число " + ch);
-        } else if (chAsInt >= 48 && chAsInt < 58) {
-            System.out.println("Переменная содержит число " + ch);
+        if (charCode > 64 && charCode < 91 || charCode > 96 && charCode < 123 || charCode > 127 && charCode < 176 || charCode > 223 && charCode < 244) {
+            System.out.println("Переменная содержит букву " + character);
+        } else if (charCode >= 48 && charCode < 58) {
+            System.out.println("Переменная содержит число " + character);
         } else {
-            System.out.println("Переменная содержит букву " + ch);
-        }        
-        System.out.println();
+            System.out.println("Переменная содержит не букву и не число " + character);
+        }
 
         //6. Определение суммы вклада и начисленных банком %
-        System.out.println("6. Определение суммы вклада и начисленных банком %");
+        System.out.println("\n6. Определение суммы вклада и начисленных банком %");
         int deposit = 300_000;
         int percent = 0;
         if (deposit < 100_000) {
@@ -113,10 +108,9 @@ public class IfElseStatementTheme {
             percent = 10;
         }
         System.out.println("Сумма вклада: " + deposit + " начисленный процент: " + percent + " итоговая сумма с процентом: " + (float) (deposit + (deposit * percent / 100)));
-        System.out.println();
 
         //7. Определение оценки по предметам
-        System.out.println("7. Определение оценки по предметам");
+        System.out.println("\n7. Определение оценки по предметам");
         int percentHistory = 59;
         int percentProgramming = 91;
         int historyPoints = 0;
@@ -145,14 +139,13 @@ public class IfElseStatementTheme {
         System.out.println("Оценка по программированию: " + programmingPoints);
         System.out.println("Средний бал оценок по предметам: " + (float) (historyPoints + programmingPoints) / 2);
         System.out.println("Средний процент по предметам: " + (float) (percentHistory + percentProgramming) / 2);
-        System.out.println();
 
         //8. Расчет прибыли (убытка)
-        System.out.println("8. Расчет прибыли (убытка)");
+        System.out.println("\n8. Расчет прибыли (убытка)");
         int rent = 5000;
         int primeCost = 9000;
         int income = 15000;
-        int yearlyIncome = (income - (primeCost + rent)) * 12;
+        int yearlyIncome = (income - primeCost - rent) * 12;
         if (yearlyIncome < 0) {
             System.out.println("Убыток за год составит: -" + yearlyIncome);
         } else if (yearlyIncome >= 0) {
@@ -160,7 +153,7 @@ public class IfElseStatementTheme {
         }
 
         //9. Определение существования треугольника
-        System.out.println("9. Определение существования треугольника");        
+        System.out.println("\n9. Определение существования треугольника");        
         int hypotenuse = 5;
         int leg1 = 3;
         int leg2 = 4;
@@ -191,10 +184,9 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Прямоугольный треугольник со сторонами " + leg1 + ", " + leg2 + ", " + hypotenuse + " не существует");
         }
-        System.out.println();
 
         //10. Подсчет количества банкнот
-        System.out.println("10. Подсчет количества банкнот");
+        System.out.println("\n10. Подсчет количества банкнот");
         int srcSum = 567;
         int keepSum = 0;
         int recalcSum = 0;
