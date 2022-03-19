@@ -88,7 +88,7 @@ public class IfElseStatementTheme {
         char character = '\u005A';
         int charCode = (int) character;
 
-        if (charCode > 64 && charCode < 91 || charCode > 96 && charCode < 123 || charCode > 127 && charCode < 176 || charCode > 223 && charCode < 244) {
+        if (charCode > 64 && charCode < 91 || charCode > 96 && charCode < 123) {
             System.out.println("Переменная содержит букву " + character);
         } else if (charCode >= 48 && charCode < 58) {
             System.out.println("Переменная содержит число " + character);
