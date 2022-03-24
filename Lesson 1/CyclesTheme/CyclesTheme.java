@@ -161,8 +161,6 @@ public class CyclesTheme {
         System.out.println("\n9. Определение, является ли число счастливым");
         int sum1 = 0;
         int sum2 = 0;
-        int num1 = 0;
-        int num2 = 0;
         srcNum = 654456;
         buffer = srcNum;
         counter = 0;
@@ -170,17 +168,34 @@ public class CyclesTheme {
         while (srcNum > 0) {
             counter++;
             if (counter <= 3) {
-                num1 =  (num1 * 10) + srcNum % 10;
-                sum1 += srcNum % 10;
-                srcNum /= 10;
+                if (counter == 1) {
+                    System.out.print(srcNum % 10);
+                    sum1 += srcNum % 10;
+                    srcNum /= 10;
+                } else {
+                    System.out.print(" + " + srcNum % 10);
+                    sum1 += srcNum % 10;
+                    srcNum /= 10;
+                    if (counter == 3) {
+                        System.out.println(" = " + sum1);
+                    }
+                }
             } else {
-                num2 =  (num2 * 10) + srcNum % 10;
-                sum2 += srcNum % 10;
-                srcNum /= 10;
+                if (counter == 4) {
+                    System.out.print(srcNum % 10);
+                    sum2 += srcNum % 10;
+                    srcNum /= 10;
+                } else {
+                    System.out.print(" + " + srcNum % 10);
+                    sum2 += srcNum % 10;
+                    srcNum /= 10;
+                    if (counter == 6) {
+                        System.out.println(" = " + sum2);
+                    }
+                }
             }
         }
-        System.out.println((num1 / 100) + " + " + ((num1 / 10) % 10) + " + " + (num1 % 100) % 10 + " = " + sum1);
-        System.out.println((num2 / 100) + " + " + ((num2 / 10) % 10) + " + " + (num2 % 100) % 10 + " = " + sum2);
+        
         if (sum1 == sum2) {
             System.out.println("Число " + buffer + " является счастливым");
         } else {
