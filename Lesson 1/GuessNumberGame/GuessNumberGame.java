@@ -6,7 +6,7 @@ public class GuessNumberGame {
         while (gamerNum != secretNum) {
             if (gamerNum < secretNum) {
                 System.out.println("Данное число " + gamerNum +" меньше того, что загадал компьютер");
-            gamerNum += 2;
+                gamerNum += 2;
             } else if (gamerNum > secretNum) {
                System.out.println("Данное число " + gamerNum + " больше того, что загадал компьютер");
                gamerNum--;
