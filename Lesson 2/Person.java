@@ -1,27 +1,22 @@
 public class Person {
     
-    String gender = "male";
-    String name = "Person name";
-    int weight = 0;
-    int age = 0;
+    private String name;
+    private static int counter = 0;
 
-    public void move() {
-        System.out.println(name + " идёт..");
+    public Person(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            counter++;
+            this.name = "Person_" + counter;
+        }
     }
 
-    public void seat() {
-        System.out.println(name + " сидит..");
+    public String getName() {
+        return name;
     }
 
-    public void run() {
-        System.out.println(name + " бежит..");
-    }
-
-    public void say() {
-        System.out.println(name + " говорит..");
-    }
-
-    public void learnJava() {
-        System.out.println(name + " учит Java..");
+    public Object clone() {
+        return new Person(name);
     }
 }

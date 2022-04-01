@@ -21,12 +21,12 @@ public class CalculatorTest {
             Calculator calc = new Calculator(num1, num2, sign);
             result = calc.calculate();
             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
-
+            
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 yesNo = scan.nextLine();
-            } while (!yesNo.equalsIgnoreCase("no") && !yesNo.equalsIgnoreCase("yes"));
-        } while (yesNo.equalsIgnoreCase("yes"));
+            } while (!"no".equalsIgnoreCase(yesNo) && !"yes".equalsIgnoreCase(yesNo));
+        } while ("yes".equalsIgnoreCase(yesNo));
         
     }
 }
