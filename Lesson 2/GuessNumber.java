@@ -2,19 +2,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-    Person player1;
-    Person player2;
-    Person activePlayer;
+    private Player player1;
+    private Player player2;
+    private Player activePlayer;
 
-    public GuessNumber(Person player1, Person player2) {
-        this.player1 = (Person) player1.clone();
-        this.player2 = (Person) player2.clone();
+    public GuessNumber(String name1, String name2) {
+        this.player1 = new Player(name1);
+        this.player2 = new Player(name2);
     }
 
     public void start() {
         int gamerNum = 0;
         Random random = new Random();
-        int secretNum = random.nextInt(100);
+        int secretNum = random.nextInt(99 + 1) + 1; //(0 : 100] = [1 : 100]
         System.out.println("Число загадано!");
         Scanner scanner = new Scanner(System.in);
 
@@ -31,20 +31,16 @@ public class GuessNumber {
 
             if (gamerNum < secretNum) {
                 System.out.println("Данное число меньше того, что загадал компьютер");
-                changePlayer();
+                activePlayer = changePlayer();
             } else if (gamerNum > secretNum) {
                System.out.println("Данное число больше того, что загадал компьютер");
-               changePlayer();
+               activePlayer = changePlayer();
             }
         }
         System.out.println("Победил игрок " + activePlayer.getName() + "! Загаданное число: " + gamerNum);
     }
 
-    private void changePlayer() {
-        if (activePlayer == player1) {
-            activePlayer = player2;
-        } else {
-            activePlayer = player1;
-        }
+    private Player changePlayer() {
+        return activePlayer == player1 ? player2 : player1;
     }
 }

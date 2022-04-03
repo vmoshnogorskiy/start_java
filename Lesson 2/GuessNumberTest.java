@@ -3,24 +3,22 @@ import java.util.Scanner;
 public class GuessNumberTest {
 
     public static void main(String[] args) {
-        String yesNo = "";
-        Scanner scan = new Scanner(System.in);
+        String option = "";
+        Scanner console = new Scanner(System.in);
         System.out.println("Введите имя первого игрока: ");
-        String gamerName1 = scan.nextLine();
+        String playerName1 = console.nextLine();
         System.out.println("Введите имя второго игрока: ");
-        String gamerName2 = scan.nextLine();
+        String playerName2 = console.nextLine();
 
-        if (gamerName1 != "" && gamerName2 != "") {
-            Person gamer1 = new Person(gamerName1);
-            Person gamer2 = new Person(gamerName2);
+        if (playerName1 != "" && playerName2 != "") {
             do {
-                GuessNumber guessNumber = new GuessNumber(gamer1, gamer2);
+                GuessNumber guessNumber = new GuessNumber(playerName1, playerName2);
                 guessNumber.start();
                 do {
                     System.out.println("Хотите продолжить игру? [yes/no]:");
-                    yesNo = scan.nextLine();
-                } while (!"no".equalsIgnoreCase(yesNo) && !"yes".equalsIgnoreCase(yesNo));
-            } while ("yes".equalsIgnoreCase(yesNo));
+                    option = console.nextLine();
+                } while (!"no".equalsIgnoreCase(option) && !"yes".equalsIgnoreCase(option));
+            } while ("yes".equalsIgnoreCase(option));
         } else {
             System.out.println("Введено некорректное имя игрока");
         }
