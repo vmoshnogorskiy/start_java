@@ -12,11 +12,11 @@ public class GuessNumber {
     }
 
     public void start() {
-        int gamerNum = 0;
+        int playerNum = 0;
         Random random = new Random();
-        int secretNum = random.nextInt(99 + 1) + 1; //(0 : 100] = [1 : 100]
+        int secretNum = random.nextInt(100) + 1; //(0 : 100] = [1 : 100]
         System.out.println("Число загадано!");
-        Scanner scanner = new Scanner(System.in);
+        Scanner console = new Scanner(System.in);
 
         if (random.nextInt(2) == 2) {
             activePlayer = player2;
@@ -24,20 +24,19 @@ public class GuessNumber {
             activePlayer = player1;
         }
 
-        while (secretNum != gamerNum) {
+        while (secretNum != playerNum) {
             System.out.println("Игрок " + activePlayer.getName() + " угадывает число:");
-            gamerNum = scanner.nextInt();
-            scanner.nextLine();
+            playerNum = console.nextInt();
+            console.nextLine();
 
-            if (gamerNum < secretNum) {
+            if (playerNum < secretNum) {
                 System.out.println("Данное число меньше того, что загадал компьютер");
-                activePlayer = changePlayer();
-            } else if (gamerNum > secretNum) {
+            } else if (playerNum > secretNum) {
                System.out.println("Данное число больше того, что загадал компьютер");
-               activePlayer = changePlayer();
             }
+            activePlayer = changePlayer();
         }
-        System.out.println("Победил игрок " + activePlayer.getName() + "! Загаданное число: " + gamerNum);
+        System.out.println("Победил игрок " + activePlayer.getName() + "! Загаданное число: " + playerNum);
     }
 
     private Player changePlayer() {
