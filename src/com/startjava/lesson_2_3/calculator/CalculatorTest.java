@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -27,6 +29,5 @@ public class CalculatorTest {
                 yesNo = scan.nextLine();
             } while (!"no".equalsIgnoreCase(yesNo) && !"yes".equalsIgnoreCase(yesNo));
         } while ("yes".equalsIgnoreCase(yesNo));
-        
     }
 }

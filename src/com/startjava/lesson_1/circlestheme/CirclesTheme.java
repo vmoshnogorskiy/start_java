@@ -1,4 +1,6 @@
-public class CyclesTheme {
+package com.startjava.lesson_1.circlestheme;
+
+public class CirclesTheme {
     public static void main(String[] args) {
         // 1. Подсчет суммы четных и нечетных чисел
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
