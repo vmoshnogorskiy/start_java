@@ -4,20 +4,18 @@ import java.lang.Math;
 
 public class Calculator {
 
-    private char sign;
-    private int num1;
-    private int num2;
-    private static int result;
+    public static int calculate(String expression) {
+        char sign;
+        int num1;
+        int num2;
+        String[] inputArray;
 
-    public Calculator(int num1, int num2, char sign) {
-        this.num1 = num1;
-        this.num2 = num2;
-        this.sign = sign;
-    }
-
-    public static int calculate(int num1, int num2, char sign) {
-        result =
-            switch (sign) {
+        inputArray = expression.split(" ");
+        if (isValidated(inputArray)) {
+            num1 = Integer.parseInt(inputArray[0]);
+            num2 = Integer.parseInt(inputArray[2]);
+            sign = inputArray[1].charAt(0);
+            return switch (sign) {
                 case '+' -> num1 + num2;
                 case '-' -> num1 - num2;
                 case '*' -> Math.multiplyExact(num1, num2);
@@ -26,6 +24,12 @@ public class Calculator {
                 case '^' -> (int) Math.pow(num1, num2);
                 default  -> throw new IllegalStateException("Unexpected value: " + sign);
             };
-        return result;
+        } else {
+            return -1;
+        }
+    }
+
+    private static boolean isValidated(String[] args) {
+        return args[0].matches("[+]?\\d+") && args[2].matches("[+]?\\d+");
     }
 }
