@@ -5,16 +5,11 @@ import java.lang.Math;
 public class Calculator {
 
     public static int calculate(String expression) {
-        char sign;
-        int num1;
-        int num2;
-        String[] inputArray;
-
-        inputArray = expression.split(" ");
-        if (isValidated(inputArray)) {
-            num1 = Integer.parseInt(inputArray[0]);
-            num2 = Integer.parseInt(inputArray[2]);
-            sign = inputArray[1].charAt(0);
+        String[] arrayExpression = expression.split(" ");
+        if (isValidated(arrayExpression)) {
+            int num1 = Integer.parseInt(arrayExpression[0]);
+            int num2 = Integer.parseInt(arrayExpression[2]);
+            char sign = arrayExpression[1].charAt(0);
             return switch (sign) {
                 case '+' -> num1 + num2;
                 case '-' -> num1 - num2;
@@ -25,7 +20,9 @@ public class Calculator {
                 default  -> throw new IllegalStateException("Unexpected value: " + sign);
             };
         } else {
-            return -1;
+            System.out.println("Для вычислений используйте только целые положительные числа!");
+            System.out.println("Введите корректные значения");
+            return 1_999_999_999;
         }
     }
 
