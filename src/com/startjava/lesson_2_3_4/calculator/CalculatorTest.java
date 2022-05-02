@@ -13,10 +13,12 @@ public class CalculatorTest {
         do {
             System.out.println("Введите математическое выражение: ");
             mathExpression = scan.nextLine();
-            result = Calculator.calculate(mathExpression);
-
-            if (result != 1_999_999_999) {
+            try {
+                result = Calculator.calculate(mathExpression);
                 System.out.println(mathExpression + " = " + result);
+            } catch(Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Введите корректные значения");
             }
 
             do {
