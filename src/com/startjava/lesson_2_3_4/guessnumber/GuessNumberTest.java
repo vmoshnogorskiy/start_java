@@ -4,27 +4,27 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
+    private static Scanner console;
+    private static String[] playersNames = new String[3];
+
     public static void main(String[] args) {
         String option = "";
-        Scanner console = new Scanner(System.in);
-        System.out.println("Введите имя первого игрока: ");
-        String playerName1 = console.nextLine();
-        System.out.println("Введите имя второго игрока: ");
-        String playerName2 = console.nextLine();
-        System.out.println("Введите имя третьего игрока: ");
-        String playerName3 = console.nextLine();
-
-        if (playerName1 != "" && playerName2 != "" && playerName3 != "") {
-            GuessNumber guessNumber = new GuessNumber(playerName1, playerName2, playerName3);
+        insertPlayers();
+        GuessNumber guessNumber = new GuessNumber(playersNames);
+        do {
+            guessNumber.start();
             do {
-                guessNumber.start();
-                do {
-                    System.out.println("\nХотите продолжить игру? [yes/no]:");
-                    option = console.nextLine();
-                } while (!"no".equalsIgnoreCase(option) && !"yes".equalsIgnoreCase(option));
-            } while ("yes".equalsIgnoreCase(option));
-        } else {
-            System.out.println("Введено некорректное имя игрока");
+                System.out.println("\nХотите продолжить игру? [yes/no]:");
+                option = console.nextLine();
+            } while (!"no".equalsIgnoreCase(option) && !"yes".equalsIgnoreCase(option));
+        } while ("yes".equalsIgnoreCase(option));
+    }
+
+    private static void insertPlayers() {
+        console = new Scanner(System.in);
+        for (int i = 0; i < playersNames.length; i++) {
+            System.out.println("Введите имя " + (i + 1) + " игрока: ");
+            playersNames[i] = console.nextLine();
         }
     }
 }

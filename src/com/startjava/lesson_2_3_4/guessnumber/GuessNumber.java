@@ -1,8 +1,5 @@
 package com.startjava.lesson_2_3_4.guessnumber;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,32 +11,31 @@ public class GuessNumber {
     private Scanner console;
     private int gameNum;
 
-    public GuessNumber(String name1, String name2, String name3) {
-        this.players[0] = new Player(name1);
-        this.players[1] = new Player(name2);
-        this.players[2] = new Player(name3);
+    public GuessNumber(String [] playersNames) {
+        for (int i = 0; i < playersNames.length; i++) {
+            this.players[i] = new Player(playersNames[i]);
+        }
+        console = new Scanner(System.in);
     }
 
     public void start() {
-        Random random = new Random();
-        secretNum = random.nextInt(100) + 1;
-        System.out.println("У каждого игрока по 10 попыток отгадать число");
-        console = new Scanner(System.in);
-
         if (playerNum > 0) {    //при повторной игре сброс ранее названных чисел
             initPlayers();
         }
+        Random random = new Random();
+        secretNum = random.nextInt(100) + 1;
+        System.out.println("У каждого игрока по 10 попыток отгадать число");
         activePlayer = players[random.nextInt(3)];
-        playGame();
+        startGameplay();
     }
 
-    private void playGame() {
+    private void startGameplay() {
         while (secretNum != playerNum && activePlayer.getNumberAttempt() < 10) {
-            activePlayer.setNumberAttempt(activePlayer.getNumberAttempt() + 1);
+            activePlayer.incrementNumberAttempt();
             System.out.println("Игрок " + activePlayer.getName() + " угадывает число:");
             playerNum = console.nextInt();
             console.nextLine();
-            activePlayer.setEnteredNumbers(activePlayer.getNumberAttempt() - 1, playerNum);
+            activePlayer.setEnteredNumber(playerNum);
 
             if (playerNum < secretNum) {
                 System.out.println("Данное число меньше того, что загадал компьютер");
@@ -72,7 +68,7 @@ public class GuessNumber {
 
     private void initPlayers() {
         for (int i = 0; i < players.length; i++) {
-            players[i].fillEnteredNumbers(0, players[i].getNumberAttempt());
+            players[i].fillEnteredNumbers(0);
             players[i].setNumberAttempt(0);
         }
     }

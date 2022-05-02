@@ -11,7 +11,7 @@ public class Player {
     private int score;
 
     public Player(String name) {
-        if (name != null && name != "") {
+        if (name != null && !name.equals("")) {
             this.name = name;
         } else {
             counter++;
@@ -24,8 +24,12 @@ public class Player {
         return numberAttempt;
     }
 
-    public void setNumberAttempt(int value) {
-        this.numberAttempt = value;
+    public void setNumberAttempt(int numberAttempt) {
+        this.numberAttempt = numberAttempt;
+    }
+
+    public void incrementNumberAttempt(){
+        numberAttempt++;
     }
 
     public String getName() {
@@ -33,13 +37,12 @@ public class Player {
     }
 
     public int[] getEnteredNumbers(int length) {
-        int[] numbersCopy = Arrays.copyOf(this.enteredNumbers, length);
-        return numbersCopy;
+        return Arrays.copyOf(enteredNumbers, length);
     }
 
-    public void setEnteredNumbers(int index, int value) {
-        if (value > 0 && value <= 100) {
-            this.enteredNumbers[index] = value;
+    public void setEnteredNumber(int number) {
+        if (number > 0 && number <= 100) {
+            enteredNumbers[numberAttempt - 1] = number;
         }
     }
 
@@ -51,7 +54,7 @@ public class Player {
         return score;
     }
 
-    public void fillEnteredNumbers(int fromIndex, int toIndex) {
-        Arrays.fill(this.enteredNumbers, fromIndex, toIndex, 0);
+    public void fillEnteredNumbers(int fromIndex) {
+        Arrays.fill(enteredNumbers, fromIndex, numberAttempt, 0);
     }
 }
