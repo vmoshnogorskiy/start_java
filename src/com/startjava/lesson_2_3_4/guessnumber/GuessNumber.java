@@ -11,7 +11,7 @@ public class GuessNumber {
     private Scanner console;
     private int gameNum;
 
-    public GuessNumber(String [] playersNames) {
+    public GuessNumber(String[] playersNames) {
         for (int i = 0; i < playersNames.length; i++) {
             this.players[i] = new Player(playersNames[i]);
         }
@@ -31,7 +31,6 @@ public class GuessNumber {
 
     private void startGameplay() {
         while (secretNum != playerNum && activePlayer.getNumberAttempt() < 10) {
-            activePlayer.incrementNumberAttempt();
             System.out.println("Игрок " + activePlayer.getName() + " угадывает число:");
             playerNum = console.nextInt();
             console.nextLine();
@@ -61,14 +60,14 @@ public class GuessNumber {
         gameNum++;
 
         if (gameNum == 3) {
-            System.out.println("\nПо результатам серии из трех игр " + whoWin());
+            System.out.println("\nПо результатам серии из трех игр " + determineWinner());
             clearScores();
         }
     }
 
     private void initPlayers() {
         for (int i = 0; i < players.length; i++) {
-            players[i].fillEnteredNumbers(0);
+            players[i].clearEnteredNumbers();
             players[i].setNumberAttempt(0);
         }
     }
@@ -84,17 +83,16 @@ public class GuessNumber {
     }
 
     private void printNumbers() {
-        for (int i = 0; i < players.length; i++) { //перечмсление названных чисел
+        for (int i = 0; i < players.length; i++) { //перечисление названных чисел
             System.out.print("\nИгрок " + players[i].getName() + " назвал следующие числа:");
-            for (int number: players[i].getEnteredNumbers(players[i].getNumberAttempt())
-            ) {
+            for (int number: players[i].getEnteredNumbers()) {
                 System.out.print(number + " ");
             }
             System.out.println("\nКоличество очков игрока " + players[i].getName() + " равно " + players[i].getScore());
         }
     }
 
-    private String whoWin() {
+    private String determineWinner() {
         int index = 0;
         int counter = 0;
 

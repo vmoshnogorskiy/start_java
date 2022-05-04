@@ -5,12 +5,10 @@ import java.util.Scanner;
 public class GuessNumberTest {
 
     private static Scanner console;
-    private static String[] playersNames = new String[3];
 
     public static void main(String[] args) {
         String option = "";
-        insertPlayers();
-        GuessNumber guessNumber = new GuessNumber(playersNames);
+        GuessNumber guessNumber = new GuessNumber(createPlayers());
         do {
             guessNumber.start();
             do {
@@ -20,11 +18,13 @@ public class GuessNumberTest {
         } while ("yes".equalsIgnoreCase(option));
     }
 
-    private static void insertPlayers() {
+    private static String[] createPlayers() {
+        String[] playersNames = new String[3];
         console = new Scanner(System.in);
         for (int i = 0; i < playersNames.length; i++) {
             System.out.println("Введите имя " + (i + 1) + " игрока: ");
             playersNames[i] = console.nextLine();
         }
+        return playersNames;
     }
 }

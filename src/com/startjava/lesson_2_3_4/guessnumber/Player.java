@@ -15,9 +15,9 @@ public class Player {
             this.name = name;
         } else {
             counter++;
-            this.name = "Player_" + counter;
+            name = "Player_" + counter;
         }
-        this.enteredNumbers = new int[10];
+        enteredNumbers = new int[10];
     }
 
     public int getNumberAttempt() {
@@ -28,19 +28,16 @@ public class Player {
         this.numberAttempt = numberAttempt;
     }
 
-    public void incrementNumberAttempt(){
-        numberAttempt++;
-    }
-
     public String getName() {
         return name;
     }
 
-    public int[] getEnteredNumbers(int length) {
-        return Arrays.copyOf(enteredNumbers, length);
+    public int[] getEnteredNumbers() {
+        return Arrays.copyOf(enteredNumbers, numberAttempt);
     }
 
     public void setEnteredNumber(int number) {
+        numberAttempt++;
         if (number > 0 && number <= 100) {
             enteredNumbers[numberAttempt - 1] = number;
         }
@@ -54,7 +51,7 @@ public class Player {
         return score;
     }
 
-    public void fillEnteredNumbers(int fromIndex) {
-        Arrays.fill(enteredNumbers, fromIndex, numberAttempt, 0);
+    public void clearEnteredNumbers() {
+        Arrays.fill(enteredNumbers, 0, numberAttempt, 0);
     }
 }
