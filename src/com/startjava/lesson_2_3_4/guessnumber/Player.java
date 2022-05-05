@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     
     private String name;
-    private  int[] enteredNumbers;
+    private int[] enteredNumbers;
     private int numberAttempt = 0;
     private static int counter = 0;
     private int score;
